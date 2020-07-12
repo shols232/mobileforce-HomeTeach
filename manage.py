@@ -3,22 +3,10 @@
 import os
 import sys
 
-if __name__ == '__main__':
-    debug = os.environ.get('DEBUG', None) # Grabs DEBUG off of settings
-    settings = 'root.settings'
-    try:
 
-        if debug is False and debug is not None:
-            settings = 'root.settings'
 
-        else:
-            settings = 'root.settings'
-
-    except ModuleNotFoundError:
-        settings = 'root.settings'
-
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings)
-
+def main():
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'root.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -29,3 +17,6 @@ if __name__ == '__main__':
         ) from exc
     execute_from_command_line(sys.argv)
 
+
+if __name__ == '__main__':
+    main()
